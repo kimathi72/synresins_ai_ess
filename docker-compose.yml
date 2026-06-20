@@ -31,12 +31,14 @@ services:
       dockerfile: Dockerfile
 
     container_name: synresins_backend
-
+    
+    user: "${UID}:${GID}"
     env_file:
       - .env
 
     environment:
       RAILS_ENV: development
+      HOME: /tmp
 
     volumes:
       - ./backend:/app
@@ -51,6 +53,7 @@ services:
     command: >
       bash -c "
       rm -f tmp/pids/server.pid &&
+      bundle exec rails db:prepare &&
       bundle exec rails s -b 0.0.0.0 -p 3000
       "
 
