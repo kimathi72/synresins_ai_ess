@@ -1,0 +1,2 @@
+class HsClass < ApplicationRecord
+end

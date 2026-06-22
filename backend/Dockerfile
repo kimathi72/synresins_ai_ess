@@ -8,7 +8,11 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install
+RUN bundle install && \
+    groupadd -g 1000 app && \
+    useradd -m -u 1000 -g app app
+
+USER app
 
 COPY . .
 

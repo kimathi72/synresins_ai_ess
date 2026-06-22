@@ -1,6 +1,8 @@
 require_relative "boot"
 
 require "rails/all"
+require "dotenv"
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -30,5 +32,6 @@ module SysresinsAiAssistedEss
     config.api_only = true
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+    Dotenv.load(Rails.root.parent.join(".env"))
   end
 end
