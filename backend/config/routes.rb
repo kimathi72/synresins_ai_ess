@@ -26,6 +26,11 @@ Rails.application.routes.draw do
           destroy
         ]
       end
+      resources :customers
+      resources :products
+      resources :sales_orders do
+        resources :sales_order_lines
+      end
     end
   end
 

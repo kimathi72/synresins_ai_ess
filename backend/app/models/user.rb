@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
 
-  enum :role, { "customer": 0, "sales_rep": 1, "admin": 2 }, default: :customer
+  enum :role, { "executive": 0, "admin": 1, "user": 2 }, default: :user
   # validates :name, presence: true
   # validates :email, presence: true, uniqueness: true
 end
